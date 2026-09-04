@@ -89,3 +89,128 @@ print(name) # Xhanush
 * `join()`: It combines multiple strings into one string.
 * `startswith()`: This is return a boolean value that check that text start with.
 * `endswith()`: This is return a boolean value that check that text end with.
+
+## Lists
+A python list stores multiple values in a single variable like JavaScript array. 
+Ex:
+```py
+languages = ["Python", "JavaScript", "Java"]
+```
+
+### Creating a list
+A list uses square brackets. Python lists cna contain different types
+Ex:
+```py
+numbers = [10, 50, 30, 60]
+names = ["Charu", "Dhanush", "Bhavana"]
+mixed = ["Python", 10, True, 2.4]
+```
+
+### Indexing
+Python lists zero based indexing like strings, negative indexing also works.
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+
+print(languages[0]) # Python
+print(languages[1]) # JavaScript
+print(languages[-1]) # TypeScript
+```
+
+### Slicing
+In python list we can slice a spcific portion from list. `[start:end]` start is included, end is excluded
+Ex:
+```py
+languages = ["Python", "JavaScript", "TypeScript", "Java"]
+
+print(languages[0:2]) #['Python', 'JavaScript']
+print(languages[:2])
+print(languages[2:])
+print(languages[::-1])
+```
+
+### Lists are mutable
+In string we can't modify a specific position but in list we can modify the specific position
+Ex:
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+languages[0] = "Java"
+print(languages) # ['Java', 'JavaScript', 'TypeScript']
+```
+
+### Adding items
+#### append() method
+In list we use `append()` method for adds an item to the end.
+Ex:
+```py
+languages = ["Python", "JavaScript"]
+languages.append("TypeScript")
+print(languages) # ['Python', 'JavaScript', 'TypeScript']
+```
+
+#### insert() method
+Use `insert()` method to add an item at a specific position
+```py
+languages = ["Python", "TypeScript"]
+languages.insert(1, "JavaScript")
+print(languages) # ['Python', 'JavaScript', 'TypeScript']
+```
+
+### Removing items
+#### remove() method
+Use `remove()` method to removes a specific value
+Ex:
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+languages.remove("JavaScript")
+print(languages) # ['Python', 'TypeScript']
+```
+
+#### pop() method
+`pop()` removes an item by index and returns the removed value.
+Ex:
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+removed = languages.pop(1)
+print(removed) # JavaScript
+print(languages) # ['Python', 'TypeScript']
+```
+Without an index `pop()` removes last item.
+
+### Length of list
+Use `len()` to find the length of the list
+Ex:
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+print(len(languages)) # 3
+```
+
+### List iteration
+To print list element we use for loop
+```py
+languages = ["Python", "JavaScript", "TypeScript"]
+for language in languages:
+    print(language)
+```
+
+#### range()
+We can iterate some specific range using `range()`
+```py
+for number in range(5):
+    print(number)
+```
+It runs default in `0` so the output is: `0`,`1`,`2`,`3`,`4`.
+
+#### enumerate()
+When using `enumerate` we can get the index and element
+```py
+for index, language in enumerate(languages):
+    print(index, language)
+```
+output is:
+```text
+0 Python
+1 JavaScript
+2 TypeScript
+```
+
+## Tuples
