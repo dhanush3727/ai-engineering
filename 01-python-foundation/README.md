@@ -214,3 +214,83 @@ output is:
 ```
 
 ## Tuples
+A python tuples stores multiple values in a single varible it is very similar to lists, but one important difference is the tuples are immutable that we can't modify tuples value like lists but inside a tuple there is any mutable object then we can only modify that object.
+
+### Creating a tuple
+```py
+coordinates = (10, 20)
+print(coordinates) # (10, 20)
+print(type(coordinates)) # <class 'tuple'>
+```
+
+### Tuple unpacking
+The tuple unpacking is we can get the tuple elements one by one like JavaScript destructuring
+Ex:
+```py
+point = (10, 20)
+
+x, y = point
+
+print(x) # 10
+print(y) # 20
+```
+
+## Sets
+A set is a collection of unique values. When you care about whether something exists, but you don't care about duplicates or positions. Sets automatically removes duplicates
+
+### Create a set
+```py
+languages = {"Python", "JavaScript", "TypeScript"}
+
+print(languages) # {'Python', 'JavaScript', 'TypeScript'}
+print(type(languages)) # <class 'set'>
+```
+
+### Adding values
+```py
+languages = {"Python", "JavaScript"}
+
+languages.add("TypeScript")
+
+print(languages) # {'Python', 'JavaScript', 'TypeScript'}
+```
+
+### Removing values
+```py
+languages = {"Python", "JavaScript", "TypeScript"}
+languages.remove("JavaScript")
+```
+But if the value doesn't exist then set return the error so we can use
+```py
+languages.discard("Rust")
+```
+
+### Check elements
+```py
+languages = {"Python", "JavaScript", "TypeScript"}
+print("Python" in languages) # True
+print("Rust" in languages) # False
+```
+
+### Set Operations
+```py
+frontend = {"React.js", "Next.js", "JavaScript", "TypeScript"}
+backend = {"Node.js", "Express.js", "JavaScript", "TypeScript"}
+```
+#### Union - everything from both sets
+```py
+all_technologies = frontend | backend
+print(all_technologies) # {'TypeScript', 'Node.js', 'JavaScript', 'Next.js', 'React.js', 'Express.js'}
+```
+#### Intersection - values common to both
+```py
+common = frontend & backend
+print(common) # {'TypeScript', 'JavaScript'}
+```
+#### Difference - values in one set but not the other
+```py
+frontend_only = frontend - backend
+print(frontend_only) # {'Next.js', 'React.js'}
+```
+
+## Dictonaries
