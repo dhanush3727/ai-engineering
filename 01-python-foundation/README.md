@@ -380,3 +380,82 @@ uppercase_skills = {
 ```
 
 ## Conditions
+```py
+# if condition
+score = 75
+if score >= 90:
+    print("A")
+elif score >= 75:
+    print("B")
+elif score >= 60:
+    print("C")
+else:
+    print("D")
+
+# Comparison operators
+print(age == 22)
+print(age != 18)
+print(age > 20)
+print(age < 30)
+print(age >= 22)
+print(age <= 25)
+
+# and, or, not
+experience = 2
+if age >= 18 and experience >= 2:
+    print("Eligible")
+
+role = "admin"
+if role == "admin" or role == "manager":
+    print("Can access dashboard")
+
+is_logged_in = False
+if not is_logged_in:
+    print("Please login")
+
+# Conditions with collections
+skills = ["React", "Python", "TypeScript"]
+if "Python" in skills:
+    print("Python found")
+
+allowed_roles = {"ADMIN", "MANAGER", "ENGINEER"}
+role = "ENGINEER"
+if role in allowed_roles:
+    print("Access granted")
+
+user = {
+    "name": "Dhanush",
+    "role": "ENGINEER"
+}
+if "role" in user:
+    print("Role exists")
+```
+Python false values are:
+```text
+False
+None
+0
+""
+[]
+{}
+set()
+```
+other than this all values are true.
+
+## Loops
+### for loop
+```py
+# for loop in range
+for i in range(6):
+    print(i)
+
+technologies = ["Python", "React", "Node.js"]
+for technology in technologies:
+    print(technology)
+```
+`range()`:
+- In the for loop we use the `range` for print sequence values.
+- The range `range(start, stop)` it is include the start and exclude the stop.
+- We can also use `range(start, stop, step)` the step is default set as 1. So it is add `+1`.
+- If we set the step as 2 then add the `+2` for every iterate.
+- To reverse the sequence the use the step as `-1`.
