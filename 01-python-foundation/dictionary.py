@@ -85,3 +85,34 @@ skills = {
 }
 for key, value in skills.items():
     print(f"{key}: {value}")
+
+
+# Dictionary Comprehensions
+# Exercise 1
+numbers = [1, 2, 3, 4, 5]
+squares = {
+    num: num * num
+    for num in numbers
+}
+print(squares)
+
+# Exercise 2
+uppercase_skills = {
+    category: skill.upper()
+    for category, skill in skills.items()
+}
+print(uppercase_skills)
+
+# Exercise 3: Transforming an exising dictionary
+scores = {
+    "doc_1": 0.92,
+    "doc_2": 0.41,
+    "doc_3": 0.87,
+    "doc_4": 0.32
+}
+relevant_documents = {
+    doc: score
+    for doc, score in scores.items()
+    if score >= 0.8
+}
+print(relevant_documents)

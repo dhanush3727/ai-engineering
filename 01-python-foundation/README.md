@@ -294,3 +294,89 @@ print(frontend_only) # {'Next.js', 'React.js'}
 ```
 
 ## Dictonaries
+A dictionary stores data as key value pairs like objects in JavaScript. Dictionary can contain different types.
+
+### Creating Dictonaries
+```py
+user = {
+    "name": "Dhanush",
+    "age": 22
+}
+```
+
+### Accessing Values
+In the dictionary we can get the value using the key.
+```py
+print(user["name"])
+print(user["age"])
+```
+
+### Adding new key and updating a value
+```py
+user["role"] = "Software Developer"
+user["age"] = 23
+print(user)
+```
+
+### Removing a key
+We can use `del` or `.pop()`. `pop()` removes the key and gives you the value that was removed.
+```py
+del user["role"]
+age = user.pop("age")
+
+print(age)
+print(user)
+```
+
+### Checking whether a key exists
+```py
+print("name" in user) # TRUE
+print("email" in user) # FALSE
+```
+
+### `.get()`
+If we check using `in` if the key was not there then it print the error. So we can use `.get()`
+```py
+print(user.get("email")) # None
+```
+
+### Getting keys and values
+```py
+print(user.keys())
+print(user.values())
+```
+
+### Looping through a dictionary
+We can use `.items()` to print the dictionary keys and values.
+```py
+for key, value in user.items():
+    print(f"{key}: {value}")
+```
+
+### Dictionary Comprehensions
+A dictionary comprehensions is a concise way to create a dictionary from an iterable.
+```py
+numbers = [1, 2, 3, 4, 5]
+squares = {
+    num: num * num
+    for num in numbers
+}
+print(squares)
+
+# Using conditions
+even_squares = {
+    number: number * number
+    for number in numbers
+    if number % 2 == 0
+}
+
+print(even_squares)
+
+# Trnasforming an existing dictionary
+uppercase_skills = {
+    category: skill.upper()
+    for category, skill in skills.items()
+}
+```
+
+## Conditions
