@@ -459,3 +459,69 @@ for technology in technologies:
 - We can also use `range(start, stop, step)` the step is default set as 1. So it is add `+1`.
 - If we set the step as 2 then add the `+2` for every iterate.
 - To reverse the sequence the use the step as `-1`.
+
+`enumerate()`:
+- It is used to print the index and value. Ex:
+```py
+# enumerate - print index and value together
+equipment = ["motor", "pump", "compressor"]
+for index, item in enumerate(equipment):
+    print(index, item)
+
+# can also choose the starting index
+for number, item in enumerate(equipment, start=1):
+    print(number, item)
+```
+
+### While loop
+```py
+attempt = 1
+while attempt <= 3:
+    print(f"Attempt {attempt}")
+    attempt += 1
+```
+
+## Functions
+```py
+# Without parameter
+def greet():
+    print("Hello Dhanush")
+greet()
+
+# With parameter
+def greeting(name):
+    print(f"Hello, {name}")
+greeting("Dhanush")
+```
+### Default paramter:
+A default parameter is a paramter that already has a value if the caller does not provide one. Required parameters should come before default parameters. Ex,
+`def search(query, limit=5):` Valid
+`def search(limit=5, query):` Invalid
+```py
+# Default paramter
+def search_document(query, limit=5):
+    print(f"Searching for {query} with limit {limit}")
+search_document("motor")
+search_document("motor", 10)
+```
+
+### Keyword arguments
+In the keyword argument, you explicitly tell python which parameter gets the value.
+```py
+# Keyword Arguments
+def task(title, priority):
+    print(title, priority)
+task(priority="high", title="Replace")
+```
+We can also use positional + keyword together like
+`task("Replace motor", priority="high")` - This is valid
+`task(title="Replace motor", "high")` - This is invalid
+
+### *args
+The `*` is important it collect all arguments and make it in tuples
+```py
+def process(*args):
+    print(type(args))
+    print(args)
+process("Motor", "Pump", "Generator")
+```
