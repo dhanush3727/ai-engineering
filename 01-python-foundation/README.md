@@ -525,3 +525,69 @@ def process(*args):
     print(args)
 process("Motor", "Pump", "Generator")
 ```
+`*args` with normal parameters:
+You can have normal parameters before `*args`.
+```py
+def process_equipment(category, *equipment):
+    print(f"Category: {category}")
+
+    for item in equipment:
+        print(f"Processing {item}")
+process_equipment(
+    "Critical",
+    "Motor",
+    "Pump",
+    "Compressor"
+)
+```
+
+### **kwargs
+This is keyword arguments it becomes the arguments dictionary
+```py
+def create_equipment(**kwargs):
+    print(kwargs)
+create_equipment(name="Motor", status="active", location="Plant A")
+
+def show_equipment(**details):
+    for key, value in details.items():
+        print(f"{key}: {value}")
+show_equipment(name="Motor", status="active", location="Plant A")
+```
+
+## Comprehension
+### List Comprehension
+A list comprehension is a compact way to create a new list from an existing iterable.
+The pattern is `[expression for item in iterable if condition]`.
+```py
+numbers = [1,2,3,4,5]
+squares = [num * num for num in numbers]
+print(squares)
+
+# with condition
+even_numbers = [num for num in numbers if num % 2 ==0]
+print(even_numbers)
+```
+
+### Dictionary Comprehension
+A dictionary comprehension creates a new dictionary from an iterable. The pattern is
+```
+{
+    key_expression: value_expression
+    for item in iterable
+    if condition
+}
+```
+Ex:
+```py
+scores = {
+    "doc_1": 0.92,
+    "doc_2": 0.41,
+    "doc_3": 0.87
+}
+percentages = {
+    doc: score * 100
+    for doc, score in scores.items()
+    if score >= 0.8
+}
+print(percentages)
+```

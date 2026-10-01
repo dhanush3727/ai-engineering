@@ -80,6 +80,14 @@ def log_event(event_type, *messages):
         print(f"[{event_type}] {message}")
 log_event("ERROR", "Database failed", "Retrying connection")
 
+# *args with normal parameters
+def process_equipment(category, *equipment):
+    print(f"Category: {category}")
+
+    for item in equipment:
+        print(f"Processing {item}")
+process_equipment("Critical", "Motor", "Pump", "Compressor")
+
 # Exercise 1
 def process_equipment(*equipment):
     for equip in equipment:
@@ -97,9 +105,49 @@ calculate_total(10, 20)
 # Exercise 3
 def build_context(*documents):
     return "\n".join(documents) #\n is new line character in python
-context = build_context(
-    "Motor maintenance guide",
-    "Pump inspection guide",
-    "Compressor safety guide"
-)
+context = build_context("Motor maintenance guide", "Pump inspection guide", "Compressor safety guide")
 print(context)
+
+# Exercise 4
+def log_messages(level, *messages):
+    for message in messages:
+        print(f"[{level}] {message}")
+log_messages("ERROR", "Database connection failed", "Retrying connection", "Connection restored")
+
+
+# **kwargs is keyword arguments. It becomes dictionary
+def create_equipment(**kwargs):
+    print(kwargs)
+create_equipment(name="Motor", status="active", location="Plant A")
+
+def show_equipment(**details):
+    for key, value in details.items():
+        print(f"{key}: {value}")
+show_equipment(name="Motor", status="active", location="Plant A")
+
+# Exercise 1
+def equipment_detail(**details):
+    for key, value in details.items():
+        print(f"{key}: {value}")
+equipment_detail(name="Motor", status="active", location="Plant A", department="Production")
+
+# Exercise 2
+def configure_model(**config):
+    for key, value in config.items():
+        print(f"{key}: {value}")
+configure_model(model="gpt", temperature=0.2, max_tokens=500)
+
+# Exercise 3
+def create_user(username, **details):
+    print(f"Username: {username}")
+
+    for key, value in details.items():
+        print(f"{key}: {value}")
+create_user("Dhanush", role="developer", experience=2, location="Trichy")
+
+# All in one example
+def example(name, *args, **kwargs):
+    print(f"Username: {name}")
+    print(f"Skills {args}")
+    print(f"experience {kwargs}")
+example("Dhanush", "React", "Python", role="Developer", experience=2)
