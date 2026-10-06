@@ -554,6 +554,14 @@ def show_equipment(**details):
 show_equipment(name="Motor", status="active", location="Plant A")
 ```
 
+### Lambda functions
+A *lambda functions* is a small, anonymous function written in a single expression. The pattern is `lambda parameter: expression`. The expression's result is automatically returned.
+Ex:
+```py
+square = lambda num: num * num
+print(square(2))
+```
+
 ## Comprehension
 ### List Comprehension
 A list comprehension is a compact way to create a new list from an existing iterable.
@@ -590,4 +598,24 @@ percentages = {
     if score >= 0.8
 }
 print(percentages)
+```
+
+### Set Comprehension
+A set comprehension creates a new set from an iterable. The pattern is
+```
+{
+    expression
+    for expression in iterable
+    if condition
+}
+```
+Ex:
+```py
+scores = [0.92, 0.41, 0.87, 0.41, 0.95]
+unique_score = {
+    score
+    for score in scores
+    if score >= 0.8
+}
+print(unique_score)
 ```

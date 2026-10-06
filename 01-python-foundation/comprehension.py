@@ -75,3 +75,46 @@ hours = {
     if hour >= 100
 }
 print(hours)
+
+# Set Comprehension
+numbers = [1,2,3,4,5,5]
+squares = {num * num for num in numbers}
+print(squares)
+
+skills = ["Python", "React", "JavaScript", "React", "TypeScript"]
+unique_skills = {skill for skill in skills}
+print(unique_skills)
+
+scores = [0.92, 0.41, 0.87, 0.41, 0.95]
+unique_score = {
+    score
+    for score in scores
+    if score >= 0.8
+}
+print(unique_score)
+
+# Exercise 1
+equipments = ["motor", "pump", "motor", "compressor", "pump"]
+unique_equipments = {
+    equipment.upper()
+    for equipment in equipments
+}
+print(unique_equipments)
+
+# Exercise 2
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+unique_numbers = {
+    num
+    for num in numbers
+    if num % 3 == 0
+}
+print(unique_numbers)
+
+# Exercise 3
+documents = ["motor", "pump", "motor", "compressor", "pump", "generator" ]
+unique_document = {
+    document.upper()
+    for document in documents
+    if len(document) > 4
+}
+print(unique_document)
