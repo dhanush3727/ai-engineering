@@ -674,3 +674,61 @@ def process_equipment(records):
     return result
 print(process_equipment(equipment_records))
 ```
+
+### else
+`else` is to run code only when `try` block completes without raising an exception.
+```py
+user = {
+    "name": "Dhanush",
+    "age": 22
+}
+try:
+    age = int(user["age"])
+except KeyError:
+    print("Age field is missing")
+except ValueError:
+    print("Age value is invalie")
+except TypeError:
+    print("Age has an invalid type")
+else:
+    print(f"Successfully print {user['name']}: {age}")
+```
+In this example if the age is alphabetic then the `else` won't run but if the age is int the `else` will run.
+
+### finally
+The `finally` block runs when python leaves the try/except structure, whether an exception occured or not.
+Ex:
+```py
+user = {
+    "name": "Dhanush",
+    "age": 22
+}
+try:
+    age = int(user["age"])
+except ValueError:
+    print("Invalid age")
+else:
+    print(f"Processed {user['name']}: {age}")
+finally:
+    print("User processing attempt finished")
+```
+In this example the `finally` will must.
+
+### raise
+The `raise` is used to raise an exception, signal that an error has occurred.
+Ex:
+```py
+def validate_hours(hours):
+    if hours < 0:
+        raise ValueError("Operating hours cannot be negative")
+    return hours
+try:
+    result = validate_hours(-50)
+    print(result)
+except ValueError as error:
+    print(f"Invalid hour {error}")
+```
+Here,
+`except`: catches an exception if its type matches.
+`ValueError`: specifies which type of exception to catch.
+`as error`: assigns the caught exception object to the variable `error`, so you can inspect or use it.
