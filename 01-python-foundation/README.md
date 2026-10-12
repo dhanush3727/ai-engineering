@@ -633,3 +633,44 @@ print(equipment["location"])
 print("Step 2")
 ```
 In this code the `Step 1` will run but the `Step 2` won't run because of `KeyError`.
+
+### try/except
+```py
+try:
+    print(equipment["status"])
+except:
+    print("Equipment status is unavailable")
+```
+We can handle the different type of exception like,
+`KeyError`: The key is missing
+`ValueError`: Value has the wrong format
+`TypeError`: Operation receives an incompatible type
+Ex:
+```py
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Compressor"},
+    {"name": "Generator", "hours": None},
+    {"name": "Fan", "hours": "85"}
+]
+
+def process_equipment(records):
+    result = []
+    for equipment in records:
+        try:
+            hours = int(equipment["hours"])
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
+        except KeyError:
+            print(f"Missing hours field for {equipment['name']}")
+        except ValueError:
+            print(f"Invalid hours value for {equipment['name']}")
+        except TypeError:
+            print(f"Invalid data type for {equipment['name']}")
+
+    return result
+print(process_equipment(equipment_records))
+```
