@@ -619,3 +619,17 @@ unique_score = {
 }
 print(unique_score)
 ```
+
+## Exceptions
+An exception is an event that occurs during program execution to indicate that an operation has failed or encountered an unexpected situation.
+```py
+equipment = {
+    "name": "Motor",
+    "hours": 123
+}
+
+print("Step 1")
+print(equipment["location"])
+print("Step 2")
+```
+In this code the `Step 1` will run but the `Step 2` won't run because of `KeyError`.
