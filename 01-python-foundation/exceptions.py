@@ -63,6 +63,19 @@ try:
 except ValueError as error:
     print(f"Invalid hour {error}")
 
+# re-raise
+def eqiupment_fun():
+    try:
+        hours = int("unknown")
+        print(hours)
+    except ValueError as error:
+        print(f"Import failed: {error}")
+        raise
+try:
+    eqiupment_fun()
+except ValueError as error:
+    print(f"Caller received the error: {error}")
+
 # Exercise 1
 equipment_records = [
     {"name": "Motor", "hours": "120"},

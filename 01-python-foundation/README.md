@@ -732,3 +732,20 @@ Here,
 `except`: catches an exception if its type matches.
 `ValueError`: specifies which type of exception to catch.
 `as error`: assigns the caught exception object to the variable `error`, so you can inspect or use it.
+
+### re-raise
+In python, re-raise a caught exception using a bare `raise` inside an `except` block, preserving the original traceback and context. For example,
+```py
+def eqiupment_fun():
+    try:
+        hours = int("unknown")
+        print(hours)
+    except ValueError as error:
+        print(f"Import failed: {error}")
+        raise
+try:
+    eqiupment_fun()
+except ValueError as error:
+    print(f"Caller received the error: {error}")
+```
+This means raise the currently handled exception again. Python prints the error message, then re-raises the original exception. If no outer handler catches it, the exception propagates outward and the operation fails.
