@@ -749,3 +749,52 @@ except ValueError as error:
     print(f"Caller received the error: {error}")
 ```
 This means raise the currently handled exception again. Python prints the error message, then re-raises the original exception. If no outer handler catches it, the exception propagates outward and the operation fails.
+
+### Nested try/except
+```py
+def example():
+    try:
+        print("Starting import")
+
+        try:
+            int("unknown")
+        except ValueError:
+            print(f"Invalid hours value")
+
+        print("Import function continues")
+    except Exception:
+        print("Unexpected import failure")
+example()
+```
+The output is
+```text
+Starting import
+Invalid hours value
+Import function continues
+```
+Let's trace why:
+- The outer `try` starts the import.
+- The inner `try` attempts to convert `"unknown"` to an integer.
+- Python raises `ValueError`.
+- The inner `except` catches it, so the exception is handled locally.
+- Execution continues after the inner `try/except`, still inside the outer `try`.
+- The outer `except` doesn't run because no exception escaped the outer `try`.
+
+What happens if the inner handler re-raises the exception?
+```py
+def example_raise():
+    try:
+        print("Starting import")
+
+        try:
+            int("unknown")
+        except ValueError:
+            print("Invalid hours value")
+            raise
+        print("Import function continues")
+    except ValueError:
+        print("Outer handler: import failed")
+example_raise()
+```
+Why didn't `"Import function continues"` print?
+Because the inner `raise` propagated the exception to the outer handler. Python skipped the remaining statements in the outer `try` and transferred control to the matching outer `except`.

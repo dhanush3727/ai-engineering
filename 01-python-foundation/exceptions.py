@@ -76,6 +76,49 @@ try:
 except ValueError as error:
     print(f"Caller received the error: {error}")
 
+# Nested try/except
+def example():
+    try:
+        print("Starting import")
+
+        try:
+            int("unknown")
+        except ValueError:
+            print(f"Invalid hours value")
+
+        print("Import function continues")
+    except Exception:
+        print("Unexpected import failure")
+example()
+
+def example_raise():
+    try:
+        print("Starting import")
+
+        try:
+            int("unknown")
+        except ValueError:
+            print("Invalid hours value")
+            raise
+        print("Import function continues")
+    except ValueError:
+        print("Outer handler: import failed")
+example_raise()
+
+# Custom Exception
+class InvalidOperatingHoursError(Exception):
+    pass # Intentionally leave the class body empty.
+
+def validate_hours(hours):
+    if hours < 0:
+        raise InvalidOperatingHoursError("Operating hours cannot be negative")
+    return hours
+
+try:
+    validate_hours(-10)
+except InvalidOperatingHoursError as error:
+    print(f"Equipment validation failed: {error}")
+
 # Exercise 1
 equipment_records = [
     {"name": "Motor", "hours": "120"},
@@ -165,6 +208,7 @@ def import_equipment(records):
         
     return result
 
+# Exercise 5
 equipment_records = [
     {"name": "Motor", "hours": "120"},
     {"name": "Pump", "hours": "-10"},
@@ -173,3 +217,73 @@ equipment_records = [
     {"name": "Generator", "hours": "0"}
 ]
 print(import_equipment(equipment_records))
+
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Compressor", "hours": "-5"},
+    {"name": "Fan", "hours": "85"}
+]
+def import_equipment(records):
+    result = []
+
+    try:
+        for equipment in records:
+            try:
+                hours = int(equipment["hours"])
+            except ValueError:
+                print(f"Invalid hours for {equipment['name']}")
+                raise
+
+            if hours < 0:
+                raise ValueError("Operating hours cannot be negative")
+
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
+
+    except ValueError as error:
+        print(f"Import failed: {error}")
+
+    return result
+print(import_equipment(equipment_records))
+
+# Exercise 6
+equipment_records = [
+    {"name": "Motor", "hours": 120},
+    {"name": "Pump", "hours": -10},
+    {"name": "Fan", "hours": 85},
+    {"name": "Compressor", "hours": -5}
+]
+
+
+class InvalidOperatingHoursError(Exception):
+    pass
+
+
+def validate_equipment(equipment):
+    hours = int(equipment["hours"])
+
+    if hours < 0:
+        raise InvalidOperatingHoursError(
+            "Operating hours cannot be negative"
+        )
+
+    return equipment
+
+
+valid_equipment = []
+
+for equipment in equipment_records:
+    try:
+        validated_equipment = validate_equipment(equipment)
+        valid_equipment.append(validated_equipment)
+
+    except InvalidOperatingHoursError as error:
+        print(
+            f"Equipment validation failed for "
+            f"{equipment['name']}: {error}"
+        )
+
+print(valid_equipment)    
