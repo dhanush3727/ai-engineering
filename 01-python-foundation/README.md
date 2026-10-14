@@ -798,3 +798,41 @@ example_raise()
 ```
 Why didn't `"Import function continues"` print?
 Because the inner `raise` propagated the exception to the outer handler. Python skipped the remaining statements in the outer `try` and transferred control to the matching outer `except`.
+
+### Exception chaining
+In python we use `raise ... from ...` for exception chaining.
+```py
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Fan", "hours": "85"}
+]
+
+class EquipmentImportError(Exception):
+    pass
+
+
+def parse_hours(equipment):
+    try:
+        hours = int(equipment["hours"])
+        return {
+            "name": equipment["name"],
+            "hours": hours
+        }
+    except ValueError as error:
+        raise EquipmentImportError(
+            f"Failed to import hours for {equipment['name']}"
+        ) from error
+
+
+valid_equipment = []
+
+for equipment in equipment_records:
+    try:
+        validated_equipment = parse_hours(equipment)
+        valid_equipment.append(validated_equipment)
+    except EquipmentImportError as error:
+        print(error)
+
+print(valid_equipment)
+```

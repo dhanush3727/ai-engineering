@@ -301,4 +301,39 @@ except RuntimeError as error:
 #             f"{equipment['name']}: {error}"
 #         )
 
-# print(valid_equipment)    
+# print(valid_equipment)
+
+# Exercise 7
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Fan", "hours": "85"}
+]
+
+class EquipmentImportError(Exception):
+    pass
+
+
+def parse_hours(equipment):
+    try:
+        hours = int(equipment["hours"])
+        return {
+            "name": equipment["name"],
+            "hours": hours
+        }
+    except ValueError as error:
+        raise EquipmentImportError(
+            f"Failed to import hours for {equipment['name']}"
+        ) from error
+
+
+valid_equipment = []
+
+for equipment in equipment_records:
+    try:
+        validated_equipment = parse_hours(equipment)
+        valid_equipment.append(validated_equipment)
+    except EquipmentImportError as error:
+        print(error)
+
+print(valid_equipment)
