@@ -847,3 +847,66 @@ except ValueError:
 except KeyError:
     print("Operating hours are missing")
 ```
+
+## Class
+Ex:
+```py
+class Equipment:
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+```
+1. What is `__init__()`?
+`__init__()`: It is a special method that python calls automatically when a new `Equipment` object is initialized.
+```py
+motor = Equipment("Motor", 120)
+```
+Python initializes the object and calls `__init__()` with the supplied values.
+- `name` receives `"Motor"`
+- `hours` receives `120`
+This allows each object to start with its own data.
+
+2. What is `self`?
+`self` refers to the particular object whose method is running. When Python initializes an object, the code needs a way to identify which particular object should receive the data. Consider these assignments: `self.name = name`, `self.hours = hours`.
+- `self.name` is an attributes stored on that particular object. This is a instance attribute.
+- `name` is the parameter containing the value passed to the method.
+
+3. What is a method?
+A method is a function defined inside a class that describes an operation an object can perform.
+```py
+class Equipment:
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+
+    def remaining_hours(self):
+        return 200 - self.hours
+
+motor = Equipment("Motor", 120)
+print(motor.remaining_hours())
+```
+- `def remaining_hours(self)` defines a method.
+- `self` identifies the object calling the method.
+- `self.hours` accesses that object's operating hours.
+- return sends the calculated result back to the caller.
+
+4. Instance attributes vs class attribute
+```py
+class Equipment:
+    category = "Industrial Equipment"
+
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+
+motor = Equipment("Motor", 120)
+pump = Equipment("Pump", 85)
+print(motor.name)       # Motor
+print(pump.name)        # Pump
+print(motor.category)   # Industrial Equipment
+print(pump.category)    # Industrial Equipment
+```
+Here we have two kinds of attributes:
+- `self.name` and `self.hours` are instance attributes. Each object can have its own values.
+- `category` is a class attribute. It belongs to the class and is shared as a common default value across its instances.
+
