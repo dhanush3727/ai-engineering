@@ -134,174 +134,174 @@ except RuntimeError as error:
     print(error.__cause__)
     
 
-# # Exercise 1
-# equipment_records = [
-#     {"name": "Motor", "hours": "120"},
-#     {"name": "Pump", "hours": "unknown"},
-#     {"name": "Compressor"},
-#     {"name": "Generator", "hours": None},
-#     {"name": "Fan", "hours": "85"}
-# ]
+# Exercise 1
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Compressor"},
+    {"name": "Generator", "hours": None},
+    {"name": "Fan", "hours": "85"}
+]
 
-# def process_equipment(records):
-#     result = []
-#     for equipment in records:
-#         try:
-#             hours = int(equipment["hours"])
-#             result.append({
-#                 "name": equipment["name"],
-#                 "hours": hours
-#             })
-#         except KeyError:
-#             print(f"Missing hours field for {equipment['name']}")
-#         except ValueError:
-#             print(f"Invalid hours value for {equipment['name']}")
-#         except TypeError:
-#             print(f"Invalid data type for {equipment['name']}")
+def process_equipment(records):
+    result = []
+    for equipment in records:
+        try:
+            hours = int(equipment["hours"])
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
+        except KeyError:
+            print(f"Missing hours field for {equipment['name']}")
+        except ValueError:
+            print(f"Invalid hours value for {equipment['name']}")
+        except TypeError:
+            print(f"Invalid data type for {equipment['name']}")
 
-#     return result
-# print(process_equipment(equipment_records))
+    return result
+print(process_equipment(equipment_records))
 
-# # Exercise 2
-# def validate_equipment(records):
-#     result = []
-#     for equipment in records:
-#         try:
-#             hours = int(equipment["hours"])
-#         except KeyError:
-#             print(f"Missing hours field for {equipment['name']}")
-#         except ValueError:
-#             print(f"Invalid hours value for {equipment['name']}")
-#         except TypeError:
-#             print(f"Invalid data type for {equipment['name']}")
-#         else:
-#             result.append({
-#                 "name": equipment["name"],
-#                 "hours": hours
-#             })
+# Exercise 2
+def validate_equipment(records):
+    result = []
+    for equipment in records:
+        try:
+            hours = int(equipment["hours"])
+        except KeyError:
+            print(f"Missing hours field for {equipment['name']}")
+        except ValueError:
+            print(f"Invalid hours value for {equipment['name']}")
+        except TypeError:
+            print(f"Invalid data type for {equipment['name']}")
+        else:
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
 
-#     return result
-# print(validate_equipment(equipment_records))
+    return result
+print(validate_equipment(equipment_records))
 
-# # Exercise 3
-# def import_equipment(records):
-#     result = []
-#     for equipment in records:
-#         try:
-#             hours = int(equipment["hours"])
-#         except KeyError:
-#             print(f"Missing hours field for {equipment['name']}")
-#         except ValueError:
-#             print(f"Invalid hours value for {equipment['name']}")
-#         except TypeError:
-#             print(f"Invalid data type for {equipment['name']}")
-#         else:
-#             result.append({
-#                 "name": equipment["name"],
-#                 "hours": hours
-#             })
-#         finally:
-#             print(f"Finished attempting: {equipment["name"]}")
-#     return result
-# print(import_equipment(equipment_records))
+# Exercise 3
+def import_equipment(records):
+    result = []
+    for equipment in records:
+        try:
+            hours = int(equipment["hours"])
+        except KeyError:
+            print(f"Missing hours field for {equipment['name']}")
+        except ValueError:
+            print(f"Invalid hours value for {equipment['name']}")
+        except TypeError:
+            print(f"Invalid data type for {equipment['name']}")
+        else:
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
+        finally:
+            print(f"Finished attempting: {equipment["name"]}")
+    return result
+print(import_equipment(equipment_records))
 
-# # Exercise 4
-# def import_equipment(records):
-#     result = []
-#     for equipment in records:
-#         try:
-#             hours = int(equipment['hours'])
-#             if hours < 0:
-#                 raise ValueError("Operating hours cannot be negative")
-#         except ValueError as error:
-#             print(error)
-#         else: 
-#             result.append({
-#                 "name": equipment['name'],
-#                 "hours": hours
-#             })
+# Exercise 4
+def import_equipment(records):
+    result = []
+    for equipment in records:
+        try:
+            hours = int(equipment['hours'])
+            if hours < 0:
+                raise ValueError("Operating hours cannot be negative")
+        except ValueError as error:
+            print(error)
+        else: 
+            result.append({
+                "name": equipment['name'],
+                "hours": hours
+            })
         
-#     return result
+    return result
 
-# # Exercise 5
-# equipment_records = [
-#     {"name": "Motor", "hours": "120"},
-#     {"name": "Pump", "hours": "-10"},
-#     {"name": "Compressor", "hours": "unknown"},
-#     {"name": "Fan", "hours": "85"},
-#     {"name": "Generator", "hours": "0"}
-# ]
-# print(import_equipment(equipment_records))
+# Exercise 5
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "-10"},
+    {"name": "Compressor", "hours": "unknown"},
+    {"name": "Fan", "hours": "85"},
+    {"name": "Generator", "hours": "0"}
+]
+print(import_equipment(equipment_records))
 
-# equipment_records = [
-#     {"name": "Motor", "hours": "120"},
-#     {"name": "Pump", "hours": "unknown"},
-#     {"name": "Compressor", "hours": "-5"},
-#     {"name": "Fan", "hours": "85"}
-# ]
-# def import_equipment(records):
-#     result = []
+equipment_records = [
+    {"name": "Motor", "hours": "120"},
+    {"name": "Pump", "hours": "unknown"},
+    {"name": "Compressor", "hours": "-5"},
+    {"name": "Fan", "hours": "85"}
+]
+def import_equipment(records):
+    result = []
 
-#     try:
-#         for equipment in records:
-#             try:
-#                 hours = int(equipment["hours"])
-#             except ValueError:
-#                 print(f"Invalid hours for {equipment['name']}")
-#                 raise
+    try:
+        for equipment in records:
+            try:
+                hours = int(equipment["hours"])
+            except ValueError:
+                print(f"Invalid hours for {equipment['name']}")
+                raise
 
-#             if hours < 0:
-#                 raise ValueError("Operating hours cannot be negative")
+            if hours < 0:
+                raise ValueError("Operating hours cannot be negative")
 
-#             result.append({
-#                 "name": equipment["name"],
-#                 "hours": hours
-#             })
+            result.append({
+                "name": equipment["name"],
+                "hours": hours
+            })
 
-#     except ValueError as error:
-#         print(f"Import failed: {error}")
+    except ValueError as error:
+        print(f"Import failed: {error}")
 
-#     return result
-# print(import_equipment(equipment_records))
+    return result
+print(import_equipment(equipment_records))
 
-# # Exercise 6
-# equipment_records = [
-#     {"name": "Motor", "hours": 120},
-#     {"name": "Pump", "hours": -10},
-#     {"name": "Fan", "hours": 85},
-#     {"name": "Compressor", "hours": -5}
-# ]
-
-
-# class InvalidOperatingHoursError(Exception):
-#     pass
+# Exercise 6
+equipment_records = [
+    {"name": "Motor", "hours": 120},
+    {"name": "Pump", "hours": -10},
+    {"name": "Fan", "hours": 85},
+    {"name": "Compressor", "hours": -5}
+]
 
 
-# def validate_equipment(equipment):
-#     hours = int(equipment["hours"])
-
-#     if hours < 0:
-#         raise InvalidOperatingHoursError(
-#             "Operating hours cannot be negative"
-#         )
-
-#     return equipment
+class InvalidOperatingHoursError(Exception):
+    pass
 
 
-# valid_equipment = []
+def validate_equipment(equipment):
+    hours = int(equipment["hours"])
 
-# for equipment in equipment_records:
-#     try:
-#         validated_equipment = validate_equipment(equipment)
-#         valid_equipment.append(validated_equipment)
+    if hours < 0:
+        raise InvalidOperatingHoursError(
+            "Operating hours cannot be negative"
+        )
 
-#     except InvalidOperatingHoursError as error:
-#         print(
-#             f"Equipment validation failed for "
-#             f"{equipment['name']}: {error}"
-#         )
+    return equipment
 
-# print(valid_equipment)
+
+valid_equipment = []
+
+for equipment in equipment_records:
+    try:
+        validated_equipment = validate_equipment(equipment)
+        valid_equipment.append(validated_equipment)
+
+    except InvalidOperatingHoursError as error:
+        print(
+            f"Equipment validation failed for "
+            f"{equipment['name']}: {error}"
+        )
+
+print(valid_equipment)
 
 # Exercise 7
 equipment_records = [
@@ -337,3 +337,17 @@ for equipment in equipment_records:
         print(error)
 
 print(valid_equipment)
+
+# Exercise 8
+def parse_hours(equipment):
+    try:
+        hours = int(equipment['hours'])
+        return hours
+    except ValueError: 
+        print("Operationg hours must be an integer")
+    except KeyError:
+        print("Operating hours are missing")
+        
+print(parse_hours({"name": "Motor", "hours": "120"}))
+print(parse_hours({"name": "Pump", "hours": "unknown"}))
+print(parse_hours({"name": "Fan"}))

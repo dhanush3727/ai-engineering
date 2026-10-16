@@ -836,3 +836,14 @@ for equipment in equipment_records:
 
 print(valid_equipment)
 ```
+
+### Best Practice
+#### Catch specific exceptions, not everything
+```py
+try:
+    hours = int(equipment['hours'])
+except ValueError:
+    print("Operating hours must be a valid integer")
+except KeyError:
+    print("Operating hours are missing")
+```
