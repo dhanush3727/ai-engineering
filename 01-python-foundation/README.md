@@ -910,3 +910,28 @@ Here we have two kinds of attributes:
 - `self.name` and `self.hours` are instance attributes. Each object can have its own values.
 - `category` is a class attribute. It belongs to the class and is shared as a common default value across its instances.
 
+5. `__init__()` vs Other methods
+`__init__()`:
+- Initializes an object with its starting data.
+- Called automatically during normal object initialization.
+- `self.hours = hours`.
+
+other methods:
+- Updates an existing object's data.
+- Called when you invoke it.
+- `self.hours += additional_hours`
+
+6. Class Method:
+Python supports class methods, which operate on the class itself using `cls`. For example
+```py
+class Equipment:
+    category = "Industrial Equipment"
+
+    @classmethod
+    def get_category(cls):
+        return cls.category
+```
+Here are the key parts:
+- `@classmethod` tells python that this is a class method.
+- `cls` refers to the class, `Equipment`, rather than an individual object.
+- `cls.category` accesses the class attribute.
