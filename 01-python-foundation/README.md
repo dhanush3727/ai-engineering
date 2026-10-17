@@ -922,7 +922,7 @@ other methods:
 - `self.hours += additional_hours`
 
 6. Class Method:
-Python supports class methods, which operate on the class itself using `cls`. For example
+Python supports class methods, which operate on the class itself using `cls`. We can call it without creating object. For example
 ```py
 class Equipment:
     category = "Industrial Equipment"
@@ -930,8 +930,25 @@ class Equipment:
     @classmethod
     def get_category(cls):
         return cls.category
+
+print(Equipment.get_category())
 ```
 Here are the key parts:
 - `@classmethod` tells python that this is a class method.
 - `cls` refers to the class, `Equipment`, rather than an individual object.
 - `cls.category` accesses the class attribute.
+
+7. Static Method:
+Python also have static methods, which don't automatically receive either `self` or `cls`. For example:
+```py
+class Equipment:
+    @staticmethod
+    def is_valid_name(name):
+        return bool(name.strip())
+
+print(Equipment.is_valid_name("Motor"))  # True
+print(Equipment.is_valid_name("   "))   # False
+```
+Difference between class method and Static method
+- Class method(`@classmethod`) receives the class automatically through `cls`. It can access class attributes and create objects using the class.
+- Static method(`@staticmethod`) receives neither `self` nor `cls` automatically. It behaves like a regular function placed inside a class for organizational purposes.

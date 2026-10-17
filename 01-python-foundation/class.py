@@ -3,11 +3,6 @@ class Equipment:
     # This is a class attribute
     category = "Industrial Equipment"
 
-    # Class Methods
-    @classmethod
-    def get_category(cls):
-        return cls.category
-
     # When a new Equipment object is initialize python calls init automatically
     def __init__(self, name, hours):
         # Add validation inside class
@@ -21,6 +16,16 @@ class Equipment:
         self.name = name
         self.hours = hours
 
+    # Class Methods
+    @classmethod
+    def get_category(cls):
+        return cls.category
+
+    # Static Methods
+    @staticmethod
+    def is_valid_name(name):
+        return bool(name.strip()) # Strip removes the whitespaces from begining and end
+
     # Create method
     def remaining_hours(self):
         return 200 - self.hours
@@ -31,6 +36,9 @@ class Equipment:
             raise ValueError("Additional operating hours cannot be negative")
         self.hours += additional_hours
 
+print(Equipment.get_category())
+print(Equipment.is_valid_name("Motor"))
+print(Equipment.is_valid_name(" "))
 motor = Equipment("Motor", 120)
 print("Motor",motor.get_category())
 motor.update_hours(15)
@@ -57,3 +65,17 @@ try:
     motor = Equipment("", 160)
 except ValueError as error:
     print(error)
+
+# Exercise 1
+class Equipment:
+    @classmethod
+    def create_with_default_hours(cls, name):
+        return cls(name, 100)
+
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+
+pump = Equipment.create_with_default_hours("Pump")
+print(pump.name)
+print(pump.hours)
