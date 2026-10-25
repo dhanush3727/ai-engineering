@@ -1040,3 +1040,19 @@ import calculator as calc
 print(calc.add(10, 20))
 print(calc.subtract(10, 5))
 ```
+
+# Package:
+A moduel is a single python file, whereas a package is a directory used to organize related modules.
+Ex:
+```text
+maintix/ Project directory
+    equipment/ package
+        __init__.py
+        models.py
+        services.py
+    main.py
+```
+Here,
+- `models.py` and `services.py` are modules.
+- `equipment/` is a package that groups those modules.
+- `__init__.py` marks the directory as a regular Python package. Modern Python can also support namespace packages without this file, but we'll use it for now.
