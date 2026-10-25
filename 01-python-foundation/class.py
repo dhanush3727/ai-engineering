@@ -66,6 +66,85 @@ try:
 except ValueError as error:
     print(error)
 
+# Example
+class Vehicle:
+    # Class attribute: shared default information for the class
+    category = "Transport"
+
+    # Constructor: runs when a new Vehicle object is initialized
+    def __init__(self, brand, speed):
+        # Validate values before assigning instance attributes
+        if not brand.strip():
+            raise ValueError("Vehicle brand cannot be empty")
+
+        if speed < 0:
+            raise ValueError("Speed cannot be negative")
+
+        # Instance attribute: each object has its own values
+        self.brand = brand
+        self.speed = speed
+
+    # Instance method: uses self to access a specific object's data
+    def get_details(self):
+        return f"{self.brand} travels at {self.speed} km/h"
+
+    def increase_speed(self, additional_speed):
+        if additional_speed < 0:
+            raise ValueError("Additional speed cannot be negative")
+
+        self.speed += additional_speed
+
+    # Class method: receives the class through cls
+    @classmethod
+    def create_new(cls, brand):
+        # Creates a vehicle object with a default speed of 0
+        return cls(brand, 0)
+
+    # Static method: receives neither self nor cls automatically
+    @staticmethod
+    def is_valid_speed(speed):
+        return speed >= 0
+
+# Create two independent objects using the constructor 
+car = Vehicle("Toyota", 100)
+bike = Vehicle("Honda", 60)
+
+# Access instance attributes
+print(car.brand) # Toyota
+print(bike.brand) # Honda
+
+# Access class attribute
+print(Vehicle.category)
+
+# Call instance methods
+print(car.get_details())   # Toyota travels at 100 km/h
+print(bike.get_details())  # Honda travels at 60 km/h
+
+# Modify one object's state
+car.increase_speed(20)
+print(car.speed)  # 120
+print(bike.speed) # 60 — unchanged
+
+# Use a class method to create an object
+truck = Vehicle.create_new("Volvo")
+print(truck.brand)  # Volvo
+print(truck.speed)  # 0
+
+# Use a static method to validate a value
+print(Vehicle.is_valid_speed(80))   # True
+print(Vehicle.is_valid_speed(-10))  # False
+
+# 16. Handle validation errors
+try:
+    invalid_car = Vehicle("", 100)
+except ValueError as error:
+    print(error)  # Vehicle brand cannot be empty
+
+try:
+    bike.increase_speed(-20)
+except ValueError as error:
+    print(error)  # Additional speed cannot be negative
+
 # Exercise 1
 class Equipment:
     @classmethod
@@ -76,6 +155,16 @@ class Equipment:
         self.name = name
         self.hours = hours
 
+    @staticmethod
+    def is_valid_hours(hours):
+        if hours < 0:
+            return False
+
+        return True
+
 pump = Equipment.create_with_default_hours("Pump")
 print(pump.name)
 print(pump.hours)
+print(Equipment.is_valid_hours(120))
+print(Equipment.is_valid_hours(-10))
+motor = Equipment("Motor", -10)

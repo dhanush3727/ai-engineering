@@ -836,6 +836,7 @@ for equipment in equipment_records:
 
 print(valid_equipment)
 ```
+*NOTE: `pass` statement is a null operation that does absolutely nothing when executed.*
 
 ### Best Practice
 #### Catch specific exceptions, not everything
@@ -952,3 +953,90 @@ print(Equipment.is_valid_name("   "))   # False
 Difference between class method and Static method
 - Class method(`@classmethod`) receives the class automatically through `cls`. It can access class attributes and create objects using the class.
 - Static method(`@staticmethod`) receives neither `self` nor `cls` automatically. It behaves like a regular function placed inside a class for organizational purposes.
+
+## Inheritance:
+It allows one class to reuse and extend the attributes and methods of another class.
+Ex:
+```py
+class Equipment:
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+
+    def get_details(self):
+        return f"{self.name}: {self.hours} hours"
+
+class Motor(Equipment):
+    def maitnenace_due(self):
+        return 200 - self.hours
+
+    def get_details(self):
+        return f"Motor {self.name}: {self.hours} operating hours"
+
+class Pump(Equipment):
+    def additional_hours(self, hours):
+        self.hours += hours
+
+    def get_details(self):
+        return f"Pump {self.name}"
+```
+
+### Method overriding:
+A child class can define a method with the same name as it's parent method.
+Ex:
+```py
+class Motor(Equipment):
+    def maitnenace_due(self):
+        return 200 - self.hours
+
+    def get_details(self):
+        return f"Motor {self.name}: {self.hours} operating hours"
+```
+
+1. `super()`:
+Reuse the parent's behavior and extend it.
+Ex:
+```py
+class Equipment:
+    def get_details(self):
+        return "Equipment details"
+
+class Motor(Equipment):
+    def get_details(self):
+        return super().get_details() + " — Motor"
+
+motor = Motor()
+print(motor.get_details())
+```
+
+# Modules:
+A module is a Python file that contains code you can reuse in another python file.
+Ex: 
+```py
+# equipment.py
+class Equipment:
+    def __init__(self, name, hours):
+        self.name = name
+        self.hours = hours
+
+    def get_details(self):
+        return f"{self.name}: {self.hours} hours"
+
+# module.py
+from equipment import Equipment
+motor = Equipment("Motor", 120)
+```
+1. Importing an entire module
+```py
+# calculator.py
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+# module.py
+import calculator as calc
+print(calc.add(10, 20))
+print(calc.subtract(10, 5))
+```
