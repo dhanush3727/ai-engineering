@@ -1,4 +1,4 @@
-# Phase 1: Python for AI Engineering
+# Phase 1: Python for AI Engineering - Python Fundamental
 ## Variables & Basic types
 ### Variables:
 In python we create a varibles like this:
