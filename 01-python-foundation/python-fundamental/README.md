@@ -214,7 +214,7 @@ output is:
 ```
 
 ## Tuples
-A python tuples stores multiple values in a single varible it is very similar to lists, but one important difference is the tuples are immutable that we can't modify tuples value like lists but inside a tuple there is any mutable object then we can only modify that object.
+A python tuples stores multiple values in a single variable it is very similar to lists, but one important difference is the tuples are immutable that we can't modify tuples value like lists but inside a tuple there is any mutable object then we can only modify that object.
 
 ### Creating a tuple
 ```py
