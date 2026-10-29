@@ -180,3 +180,58 @@ def summarize_breakdown(equipment_name: str) -> str:
 result = summarize_breakdown("Pump")
 print(result)
 ```
+
+## File handling:
+```py
+from pathlib import Path
+
+report_path = Path("01-python-foundation") / "python-engineering" / "maintenance.txt"
+report_path.parent.mkdir(parents=True, exist_ok=True)
+
+report = "Equipment: Motor\nPriority: High\n"
+
+with open(report_path, "w", encoding="utf-8") as file:
+    file.write(report)
+
+with open(report_path, "r", encoding="utf-8") as file:
+    saved_path = file.read()
+
+print(saved_path)
+```
+Here, `pathlib` builds the path and creates the directory, while file handling writed and reads the report. The important file modes are:
+- `"r"`: Read and existing file.
+- `"w"`: Write; creates the file or replaces its existing contents.
+- `"a"`: Append content to the end.
+- `"x"`: Create a new file; fail if it already exists.
+
+## HTTP Request:
+Install the requests using the command `python -m pip install requests`.
+```py
+import requests
+
+url = "https://httpbin.org/post"
+
+equipment = {
+    "name": "Industrial Pump",
+    "hours": 2500,
+    "issue": "Unusual vibration"
+}
+
+try:
+    response = requests.post(url, json=equipment, timeout=10)
+    response.raise_for_status()
+
+    result = response.json()
+    print(result["json"])
+
+except requests.RequestException as error:
+    print(f"Request failed: {error}")
+```
+Here `httpbin.org` is a testing service, not a real AI API,
+- `request.post()`: sends a POST request.
+- `json=equipment`: converts the python dictionary to JSON and sends it in the request body.
+- `timeout=10`: Maximum number of seconds the program will wait for the server to respond.
+- `raise_for_status()`: parses the returned JSON.
+- `except` handles request-related failures, including connection errors and timouts.
+
+## async/await:
