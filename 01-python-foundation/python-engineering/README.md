@@ -81,3 +81,102 @@ class Priority(Enum):
 
 task_priority = Priority.HIGH
 ```
+
+## `pathlib`:
+`pathlib` is Python module for working with file and folder paths. It makes it easier to create paths, check whether files exist, and read file information without manually joining path strings.
+Ex:
+```py
+from pathlib import Path
+
+# Create path object
+mainthence_file = Path("01-python-foundation") / "python-engineering" / "data" / "maintenance.json"
+print(mainthence_file)
+print(mainthence_file.name)
+print(mainthence_file.suffix)
+if mainthence_file.exists():
+    print("Maintenance record exists")
+else:
+    print("Maintenance record not found")
+
+# Create the exact path using the path object
+mainthence_file.parent.mkdir(parents=True, exist_ok=True)
+mainthence_file.touch(exist_ok=True)
+print(mainthence_file.exists())
+```
+In this example,
+- `parent`: Gets the directory containing the file.
+- `mkdir()`: Creates a directory.
+- `parents=True` tells python to create all missing parent folders in the path.
+- `exist_ok=True` in `mkdir()` tells python not to raise an error if the directory already exists.
+- `touch(exist_ok=True)` creates an empty file if it don't exist.
+
+## `datetime`:
+`datetime` is a built-in Python module for working with date, times and time differences.
+Ex:
+```py
+from datetime import datetime
+
+breakdown_time = datetime.now()
+print(breakdown_time)
+print(breakdown_time.year)
+print(breakdown_time.strftime("%d-%m-%y"))
+```
+
+## JSON:
+JSON is a format to storing and exchanging structured data between application. The methods or,
+- `json.dumps()`: convert python object into JSON string.
+- `json.loads()`: convert JSON string into python object.
+- `json.dump()`: write python data to a JSON file.
+- `json.load()`: Read data from JSON file.
+
+## Environment Variable:
+Create and load env variables in python
+Step 1: Install the package in your activated virtual environment.
+```bash
+pip install python-dotenv
+```
+Step2: Create a `.env` file in your project directory.
+```env
+APP_NAME=Maintix
+```
+Step 3: Load the file in python
+```py
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is missing")
+
+print("API key loaded successfully")
+```
+
+## Logging:
+Logging lets your application record what happens while it runs, such a successful operations, warnings and errors. The levels are
+- `DEBUG`: Detailed information for debugging
+- `INFO`: Normal application events
+- `WARNING`: Something unexpected may need attention
+- `ERROR`: An operation failed
+- `CRITICAL`: A severe failure
+Ex:
+```py
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def summarize_breakdown(equipment_name: str) -> str:
+    logger.info("Summarizing breakdown for %s", equipment_name)
+
+    if not equipment_name:
+        logger.error("Equipment name is missing")
+        raise ValueError("Equipment name is required")
+
+    return f"Breakdown report for {equipment_name}"
+
+result = summarize_breakdown("Pump")
+print(result)
+```

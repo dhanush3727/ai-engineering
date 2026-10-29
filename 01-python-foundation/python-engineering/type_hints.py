@@ -98,9 +98,9 @@ def format_equipment_id(equipment_id: EquipmentId) -> str:
 print(format_equipment_id(101))
 
 # Type narrowing: checking a value's type so Python's type checker can understand which type you're working with.
-def format_hours(hours: int | str) -> str:
+def format_hour(hours: int | str) -> str:
     if isinstance(hours, str):
         return hours.upper()
     return f"Hours: {hours}"
-print(format_hours(120))
-print(format_hours("Unknown"))
+print(format_hour(120))
+print(format_hour("Unknown"))
