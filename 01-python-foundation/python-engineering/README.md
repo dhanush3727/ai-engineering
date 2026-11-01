@@ -235,3 +235,51 @@ Here `httpbin.org` is a testing service, not a real AI API,
 - `except` handles request-related failures, including connection errors and timouts.
 
 ## async/await:
+```py
+import asyncio
+
+async def get_equipment():
+    print("Fetching equipment...")
+    await asyncio.sleep(2)
+    print("Equipment received")
+
+asyncio.run(get_equipment())
+
+```
+In the example,
+- `asyncio`: Used to handle the coroutines functions.
+- `asyncio.sleep()`: Wait asynchronously for 2 seconds. like `setTimeout`.
+- `asyncio.run()`: Runs the main coroutine and manages the event loop.
+Example: To call a real API using asyncio:
+Step 1: Install the httpx:
+```bash
+python -m pip install httpx
+```
+```py
+import asyncio
+import httpx
+
+async def get_equipment_data():
+    url = "https://jsonplaceholder.typicode.com/posts/1"
+
+    try:
+        async with httpx.AsyncClient() as client:
+            res = await client.get(url, timeout=10)
+
+            res.raise_for_status()
+
+            data = res.json()
+            
+            print(data)
+
+    except httpx.HTTPError as error:
+        print(f"API request failed: {error}")
+
+asyncio.run(get_equipment_data())
+```
+In this example,
+- `httpx.AsyncClient`: It is an asynchronous HTTP client used to communicate withh external APIs. Like JS `fetch()`.
+- `res.raise_for_status()`: It checks whether an HTTP response indicates success or an HTTP error.
+- `httpx.HTTPError`: is the base exception class for HTTPX-related errors.
+
+**Coroutine: In python is a specialized function that can pause its execution and resume it later, allowing for cooperative multitasking and non-blocking asynchronous operations.**
