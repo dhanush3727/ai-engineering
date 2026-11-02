@@ -31,7 +31,7 @@ Make sure your `.venv` is activated before running these commands.
 - Inspect package information: `python -m pip show httpx`. Displays details such as, Installed version, package location, dependencies, package information.
 - Check dependency issues: `python -m pip check`. Checks whether installed packages have incompatible or missing dependencies.
 
-### Share the packages:
+## `requirements.txt`:
 What happens when you share your python project with another developer? They won't automatically have the same packages installed on their computer. That's where `requirements.txt` comes in. 
 
 This is a text file that lists the Python packages and their versions required by your project. Example,
