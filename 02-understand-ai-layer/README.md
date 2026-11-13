@@ -33,12 +33,26 @@ A Large Language Model is an artificial intelligence program trained on massive 
 - Next-Word prediction: When you give it a prompt, the model calculates probabilities and predicts the most logical next word or token, step by step, to build a coherent response.
 
 ### Tokenization:
-Tokenization is the foundational process of breaking raw text into smaller units called tokens and converting those units into unique numerical IDs that a LLM can process.
+Tokenization is the foundational process of breaking raw text into smaller units called tokens and converting those units into unique numerical IDs that a LLM can process. EVery instruction you give an LLM is converted into tokens. Every model has its own tokenization method example:
+For the word `unbelivable`,
+- Model A will use 1 token and
+- Model B will use 2 tokens (`un` - `belivalbe`)
+So word is not equal to token.
+
+There are 3 types of tokens
+- Input tokens
+- Output tokens
+- Cached input tokens
 
 ### Parameters:
-Architecture size and also calculating the large amount of data that is how much data we give to train a LLM.
+Parameters are the internal numerical values(numbers) that an AI model learns during training. They help the model recognize patterns and generate responses.
 If parameter size is increase then the LLM accuracy also directly increase but local usage run is low.
 If we choose high parameter LLM then we want the high level system requirements.
+
+### Context Window:
+Context window in LLM is the maximum amount of text measured in tokens that the model can process, hold, and reference during a single interaction.
+In simple how many tokens the model can handle in its current context.
+Ex:
 
 ### LLM Limitations:
 - Hallucinations
@@ -48,3 +62,6 @@ If we choose high parameter LLM then we want the high level system requirements.
 - Lack of guaranteed fact
 - Context limitations
 - Overconfidence
+
+### Hallucination:
+An LLM hallucination happens when a LLM generates a response that sounds fluent, coherent, and confident but is factually false, completely fabricated, or disconnected from reality.
