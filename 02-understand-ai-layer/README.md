@@ -65,3 +65,33 @@ Ex:
 
 ### Hallucination:
 An LLM hallucination happens when a LLM generates a response that sounds fluent, coherent, and confident but is factually false, completely fabricated, or disconnected from reality.
+
+## Use AI model:
+```py
+from huggingface_hub import snapshot_download
+from transformers import pipeline
+
+model_name = "google/flan-t5-small"
+model_folder = "model/" + model_name.replace("/", "_")
+
+print("Downloading", model_name)
+snapshot_download(repo_id=model_name, local_dir=model_folder)
+print("Model saved in", model_folder)
+
+ai = pipeline("text2text-generation", model=model_folder)
+
+while True:
+    question = input("You: ")
+    if question.lower() == "exit":
+        break
+    result = ai(question, max_new_tokens=100)
+    print("AI: ", result[0]["generated_text"])
+```
+
+## 10 skills AI Engineer needs:
+### Foundation:
+- Python & Software Basics
+- LLM Fundamentals
+- Context Engineering: Giving the LLM the right information, in the right format, at the right time.
+
+### 
