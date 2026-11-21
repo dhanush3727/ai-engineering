@@ -58,4 +58,12 @@ This is another way to control randomness. Works differently from temperature. C
 ## Bun:
 Bun is a modern JavaScript runtime kind of like node.js but faster and more integrated. 
 - With node, we typically rely multiple tools, `npm`, `ts-node`, `nodemon`.
-- With bun we get all of that in one tool, It's a runtime, a package manager, a task runner, and even a typescript transpiler
+- With bun we get all of that in one tool, It's a runtime, a package manager, a task runner, and even a typescript transpiler.
+
+### Install the bun
+Install the bun for windows from official bun website. Check successfully installed bun using `bun --version`. 
+- `bun init`: Used to create a project like `npm init`.
+- `bun add "package_name"`: used to install packages like `npm install packages`.
+- `bunx`: It is used for `npx`.
+
+## 

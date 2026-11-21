@@ -1,0 +1,40 @@
+import type { Request, Response } from 'express';
+import { chatService } from '../services/chat.service';
+import z from 'zod';
+
+// Implementation details
+const chatSchema = z.object({
+   prompt: z
+      .string()
+      .trim()
+      .min(1, 'Prompt is required')
+      .max(1000, 'Prompt is too long'),
+   conversationId: z.string().uuid(),
+});
+
+// Public interface
+export const chatController = {
+   async sendMessage(req: Request, res: Response) {
+      const parseResult = chatSchema.safeParse(req.body);
+      if (!parseResult.success) {
+         res.status(400).json(parseResult.error.format());
+         return;
+      }
+
+      try {
+         const { prompt, conversationId } = req.body;
+
+         const { id, message } = await chatService.sendMessage(
+            prompt,
+            conversationId
+         );
+
+         res.json({
+            id,
+            message,
+         });
+      } catch (err) {
+         res.status(500).json({ err: 'Server error' });
+      }
+   },
+};
