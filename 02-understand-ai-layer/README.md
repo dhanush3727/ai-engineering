@@ -45,7 +45,7 @@ There are 3 types of tokens
 - Cached input tokens
 
 ### Parameters:
-Parameters are the internal numerical values(numbers) that an AI model learns during training. They help the model recognize patterns and generate responses.
+Parameters are the internal numerical values(numbers) that an AI model learns during training to process text and predict next token. They help the model recognize patterns and generate responses.
 If parameter size is increase then the LLM accuracy also directly increase but local usage run is low.
 If we choose high parameter LLM then we want the high level system requirements.
 
